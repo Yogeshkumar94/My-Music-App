@@ -172,16 +172,30 @@ setInterval(function(){
     let currtime = audioElement.currentTime;
     let mins = Math.floor(parseInt(currtime)/60);
     let secs = parseInt(currtime)%60;    
-   
+    let durtime = audioElement.duration;
+    let durmins = Math.floor(parseInt(durtime)/60);
+    let dursecs = parseInt(durtime)%60;
+    durmins = parseInt(durmins);
+    dursecs = parseInt(dursecs);
     mins = parseInt(mins);
     secs = parseInt(secs);
    // console.log(mins);
    //  console.log(secs);
     if(secs<10){
-    crnttime.innerText = mins + ":0" + secs;
+        if(dursecs<10){
+            crnttime.innerText = mins + ":0" + secs + "/" + durmins +":0"+ dursecs;
+        }
+        else{
+            crnttime.innerText = mins + ":0" + secs + "/" + durmins +":"+ dursecs;
+        }
     }
     else{
-        crnttime.innerText = mins + ":" + secs;
+        if(dursecs<10){
+            crnttime.innerText = mins + ":" + secs + "/" + durmins +":0"+ dursecs;
+        }
+        else{
+            crnttime.innerText = mins + ":" + secs + "/" + durmins +":"+ dursecs;
+        }
     }
 
 },1000);
